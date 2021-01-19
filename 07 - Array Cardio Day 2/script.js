@@ -17,12 +17,54 @@ const comments = [
 
 // Some and Every Checks
 // Array.prototype.some() // is at least one person 19 or older?
+
+const isAdult = people.some(function (person) {
+  const currentYear = new Date().getFullYear();
+  if (currentYear - person.year >= 19) {
+    return true;
+  }
+});
+
+const isAnotherAdult = people.some(
+  (person) => new Date().getFullYear() - person.year >= 19
+);
+
+console.log({ isAnotherAdult });
+
 // Array.prototype.every() // is everyone 19 or older?
+const allAdults = people.every(
+  (person) => new Date().getFullYear() - person.year >= 19
+);
+
+console.log({ allAdults });
 
 // Array.prototype.find()
 // Find is like filter, but instead returns just the one you are looking for
 // find the comment with the ID of 823423
 
+const commentA = comments.find(function (comment) {
+  if (comment.id === 823423) {
+    return true;
+  }
+});
+
+console.log(commentA);
+
+// another simple way to write script as similiar comment above
+const commentB = comments.find((comment) => comment.id === 823423);
+console.log(commentB);
+
 // Array.prototype.findIndex()
 // Find the comment with this ID
 // delete the comment with the ID of 823423
+
+const index = comments.findIndex((comment) => comment.id === 823423);
+console.log(index);
+
+// delete using splice
+// comments.splice(index, 1);
+
+// or in a redux way, which will build new array after deleting the comments data above
+// and using spread operator as well to ensure they all appear inside new array
+
+const newComments = [...comments.slice(0, index), ...comments.slice(index + 1)];
