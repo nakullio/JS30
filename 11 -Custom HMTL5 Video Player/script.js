@@ -22,7 +22,14 @@ function togglePlay() {
 }
 
 function updateButton() {
-  console.log("update the button");
+  const icon = this.paused ? "►" : "❚ ❚";
+  toggle.textContent = icon;
+}
+
+// create a skip fn
+function skip() {
+  console.log(this.dataset.skip);
+  video.currentTime += parseFloat(this.dataset.skip);
 }
 
 //  Hook up the event listeners
@@ -33,3 +40,4 @@ video.addEventListener("play", updateButton);
 video.addEventListener("pause", updateButton);
 // 2. Hookup when click the toggle button
 toggle.addEventListener("click", togglePlay);
+skipButtons.forEach((button) => button.addEventListener("click", skip));
