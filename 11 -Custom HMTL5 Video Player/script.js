@@ -32,6 +32,11 @@ function skip() {
   video.currentTime += parseFloat(this.dataset.skip);
 }
 
+//  fucntion for slider update
+function handleRangeUpdate() {
+  video[this.name] = this.value;
+}
+
 //  Hook up the event listeners
 //  1. Hookup when click the video screen
 video.addEventListener("click", togglePlay);
@@ -41,3 +46,9 @@ video.addEventListener("pause", updateButton);
 // 2. Hookup when click the toggle button
 toggle.addEventListener("click", togglePlay);
 skipButtons.forEach((button) => button.addEventListener("click", skip));
+
+// listen change events on range update
+ranges.forEach((range) => range.addEventListener("change", handleRangeUpdate));
+ranges.forEach((range) =>
+  range.addEventListener("mousemove", handleRangeUpdate)
+);
