@@ -37,12 +37,21 @@ function handleRangeUpdate() {
   video[this.name] = this.value;
 }
 
+//  fn for updating progress bar, using percentage(%), based on flex-basis properties on css
+function handleProgress() {
+  const percent = (video.currentTime / video.duration) * 100;
+  progressBar.style.flexBasis = `${percent}%`;
+}
+
 //  Hook up the event listeners
 //  1. Hookup when click the video screen
 video.addEventListener("click", togglePlay);
 // update the button based on click conditions
 video.addEventListener("play", updateButton);
 video.addEventListener("pause", updateButton);
+// listen on time update while video played, and run handleProgress function
+video.addEventListener("timeupdate", handleProgress);
+
 // 2. Hookup when click the toggle button
 toggle.addEventListener("click", togglePlay);
 skipButtons.forEach((button) => button.addEventListener("click", skip));
