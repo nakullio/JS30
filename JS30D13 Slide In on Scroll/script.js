@@ -13,3 +13,12 @@ function debounce(func, wait = 20, immediate = true) {
     if (callNow) func.apply(context, args);
   };
 }
+
+// select the picture we want to open.
+const slideImages = document.querySelectorAll(".slide-in");
+
+function checkSlide(e) {
+  console.log(e);
+}
+
+window.addEventListener("scroll", checkSlide);
