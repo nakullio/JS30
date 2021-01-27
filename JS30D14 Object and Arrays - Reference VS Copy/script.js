@@ -1,7 +1,18 @@
 // start with strings, numbers and booleans
+let age = 100;
+let age2 = age;
+console.log(age, age2);
+age = 200;
+console.log(age, age2);
+
+let name = "naku";
+let name2 = name;
+console.log(name, name2);
+console.log(name, name2);
+name = "nally";
 
 // Let's say we have an array
-const players = ["Wes", "Sarah", "Ryan", "Poppy"];
+const players = ["Nakula", "Sarah", "Ryan", "Poppy"];
 
 // and we want to make a copy of it.
 
