@@ -15,10 +15,10 @@ function debounce(func, wait = 20, immediate = true) {
 }
 
 // select the picture we want to open.
-const slideImages = document.querySelectorAll(".slide-in");
+const sliderImages = document.querySelectorAll(".slide-in");
 
 function checkSlide(e) {
-  console.log(e);
+  console.count(e);
 }
 
 window.addEventListener("scroll", checkSlide);
