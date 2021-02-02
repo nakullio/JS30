@@ -28,4 +28,15 @@ function paintToCnvas() {
   }, 16);
 }
 
+function takephoto() {
+  // played the sound
+  snap.currenTime = 0;
+  snap.play();
+
+  // take the data out of the canvas
+  const data = canvas.toDataURL("image/jpeg");
+  console.log(data);
+}
 getVideo();
+
+video.addEventListener("canplay", paintToCnvas);
