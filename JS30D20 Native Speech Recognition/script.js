@@ -9,10 +9,16 @@ const words = document.querySelector(".words");
 words.appendChild(p);
 
 recognition.addEventListener("result", (e) => {
-  console.log(e.results);
-  const transcript = Array.from(e.results).map((result) => result[0]);
+  // console.log(e.results);
+  const transcript = Array.from(e.results)
+    .map((result) => result[0])
+    .map((result) => result.transcript)
+    .join("");
 
   console.log(transcript);
 });
+
+// re run the speech record when finish talking
+recognition.addEventListener("end", recognition.start);
 
 recognition.start();
