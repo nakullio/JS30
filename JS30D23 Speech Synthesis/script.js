@@ -10,8 +10,10 @@ msg.text = document.querySelector('[name="text"]').value;
 // listen to voice change
 function populateVoices() {
   voices = this.getVoices();
+  //   trim the lang list for 'en' only
   //   adding voice language references
   voicesDropdown.innerHTML = voices
+    .filter((voice) => voice.lang.includes("en"))
     .map(
       (voice) =>
         `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`
@@ -45,3 +47,5 @@ voicesDropdown.addEventListener("change", setVoice);
 
 // enabling options functionalities
 options.forEach((option) => option.addEventListener("change", setOption));
+speakButton.addEventListener("click", toggle);
+stopButton.addEventListener("click", () => toggle(false));
