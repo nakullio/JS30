@@ -10,7 +10,13 @@ msg.text = document.querySelector('[name="text"]').value;
 // listen to voice change
 function populateVoices() {
   voices = this.getVoices();
-  console.log(voices);
+  //   adding voice language references
+  voicesDropdown.innerHTML = voices
+    .map(
+      (voice) =>
+        `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`
+    )
+    .join("");
 }
 
 speechSynthesis.addEventListener("voiceschanged", populateVoices);
