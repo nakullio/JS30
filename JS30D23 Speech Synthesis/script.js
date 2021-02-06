@@ -19,4 +19,11 @@ function populateVoices() {
     .join("");
 }
 
+// make the voice options works
+function setVoice() {
+  //   loop over voice name reference to activate choosen voice
+  msg.voice = voices.find((voice) => voice.name === this.value);
+}
+
 speechSynthesis.addEventListener("voiceschanged", populateVoices);
+voicesDropdown.addEventListener("change", setVoice);
