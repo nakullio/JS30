@@ -23,7 +23,25 @@ function populateVoices() {
 function setVoice() {
   //   loop over voice name reference to activate choosen voice
   msg.voice = voices.find((voice) => voice.name === this.value);
+  toggle();
+}
+
+// stop the voice when lang changes
+function toggle(startOver = true) {
+  speechSynthesis.cancel();
+  if (startOver) {
+    speechSynthesis.speak(msg);
+  }
+}
+
+function setOption() {
+  console.log(this.name, this.value);
+  msg[this.name] = this.value;
+  toggle();
 }
 
 speechSynthesis.addEventListener("voiceschanged", populateVoices);
 voicesDropdown.addEventListener("change", setVoice);
+
+// enabling options functionalities
+options.forEach((option) => option.addEventListener("change", setOption));
