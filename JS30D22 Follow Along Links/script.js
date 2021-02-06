@@ -8,9 +8,13 @@ const highlight = document.createElement("span");
 highlight.classList.add("highlight");
 document.body.appendChild(highlight);
 
-function highlightLink()
- {
-     console.log('highlight!!')
- }
+function highlightLink() {
+  const linkCoords = this.getBoundlingClientRect();
+  console.log(linkCoords);
+  highlight.style.width = `${linkCoords.width}px`;
+  highlight.style.height = `${linkCoords.height}px`;
+}
 
- triggers,foreEach (add.evenLetenr => a)
+triggers.forEach((a) => a.addEventListener("mouseenter", highlightLink));
+
+//  this the progress line
