@@ -6,11 +6,14 @@ const nav = document.querySelector(".top");
 // listen to hover in and hover out on mouse enter & leave
 
 function handleEnter() {
-  console.log("ENTER");
+  this.classList.add("trigger-enter");
+  setTimeout(() => {
+    this.classList.add("trigger-enter-active");
+  }, 150);
 }
 
 function handleLeave() {
-  console.log("LEAVE");
+  this.classList.remove("trigger-enter", "trigger-enter-active");
 }
 
 triggers.forEach((trigger) =>
@@ -20,3 +23,7 @@ triggers.forEach((trigger) =>
 triggers.forEach((trigger) =>
   trigger.addEventListener("mouseleave", handleLeave)
 );
+
+// get the content of dropdown
+
+//
