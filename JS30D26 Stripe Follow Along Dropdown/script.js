@@ -7,9 +7,12 @@ const nav = document.querySelector(".top");
 
 function handleEnter() {
   this.classList.add("trigger-enter");
-  setTimeout(() => {
-    this.classList.add("trigger-enter-active");
-  }, 150);
+  setTimeout(
+    () =>
+      this.classList.contains("trigger-enter") &&
+      this.classList.add("trigger-enter-active"),
+    150
+  );
   background.classList.add("open");
 
   //   what that dropdown actually is
@@ -24,11 +27,18 @@ function handleEnter() {
   const coords = {
     height: dropdownCoords.height,
     width: dropdownCoords.width,
+    // offset the actual coord value
+    top: dropdownCoords.top - navCoords.top,
+    left: dropdownCoords.left - navCoords.left,
   };
 
   //   styling the background
   background.style.setProperty("width", `${coords.width}px`);
   background.style.setProperty("width", `${coords.height}px`);
+  background.style.setProperty(
+    "transform",
+    `translate(${coords.left}px, ${coords.top}px)`
+  );
 }
 
 function handleLeave() {
