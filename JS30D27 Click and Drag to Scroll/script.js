@@ -16,22 +16,24 @@ slider.addEventListener("mousedown", (e) => {
   isDown = true;
   //   adding active class
   slider.classList.add("active");
-  //   check click position on the page
-  console.log(e.pageX);
+  //   check click position on the page, and on the actual item clicked
+  startX = e.pageX - slider.offsetLeft;
+  console.log(startX);
 });
 slider.addEventListener("mouseleave", () => {
   // handle isDown
-  isDown = true;
+  isDown = false;
   //   remove active class
   slider.classList.remove("active");
 });
 slider.addEventListener("mouseup", () => {
   // handle isDown
-  isDown = true;
+  isDown = false;
   //   remove active class
   slider.classList.remove("active");
 });
 slider.addEventListener("mousemove", () => {
   if (!isDown) return; // stop the fn from running
   console.count(isDown);
+  console.log(startX);
 });
