@@ -18,7 +18,7 @@ slider.addEventListener("mousedown", (e) => {
   slider.classList.add("active");
   //   check click position on the page, and on the actual item clicked
   startX = e.pageX - slider.offsetLeft;
-  console.log(startX);
+  scrollLeft = slider.scrollLeft;
 });
 slider.addEventListener("mouseleave", () => {
   // handle isDown
@@ -32,8 +32,13 @@ slider.addEventListener("mouseup", () => {
   //   remove active class
   slider.classList.remove("active");
 });
-slider.addEventListener("mousemove", () => {
+slider.addEventListener("mousemove", (e) => {
   if (!isDown) return; // stop the fn from running
-  console.count(isDown);
-  console.log(startX);
+  e.preventDefault();
+  //   where the cursor is when movi
+  const x = e.pageX - slider.offsetLeft;
+
+  //   how far we've been move
+  const walk = (x - startX) * 3;
+  slider.scrollLeft = scrollLeft - walk;
 });
