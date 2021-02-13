@@ -16,6 +16,8 @@ function handleEnter() {
   background.classList.add("open");
 
   //   what that dropdown actually is
+  // get the content of dropdown
+
   const dropdown = this.querySelector(".dropdown");
   console.log(dropdown);
 
@@ -53,7 +55,3 @@ triggers.forEach((trigger) =>
 triggers.forEach((trigger) =>
   trigger.addEventListener("mouseleave", handleLeave)
 );
-
-// get the content of dropdown
-
-//
