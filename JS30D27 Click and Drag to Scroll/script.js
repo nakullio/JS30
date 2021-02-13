@@ -11,19 +11,27 @@ let startX;
 let scrollLeft;
 
 // 3. listen on the mouse event
-slider.addEventListener("mousedown", () => {
+slider.addEventListener("mousedown", (e) => {
   // handle isDown
   isDown = true;
+  //   adding active class
+  slider.classList.add("active");
+  //   check click position on the page
+  console.log(e.pageX);
 });
 slider.addEventListener("mouseleave", () => {
   // handle isDown
   isDown = true;
+  //   remove active class
+  slider.classList.remove("active");
 });
 slider.addEventListener("mouseup", () => {
   // handle isDown
   isDown = true;
+  //   remove active class
+  slider.classList.remove("active");
 });
 slider.addEventListener("mousemove", () => {
-  console.log(isDown);
-  console.log("Do Work!");
+  if (!isDown) return; // stop the fn from running
+  console.count(isDown);
 });
