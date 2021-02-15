@@ -8,6 +8,8 @@ const buttons = document.querySelectorAll("[data-time]");
 
 // create function call timer
 function timer(seconds) {
+  // when we start the timer, clear any exsisting timer
+  clearInterval(countdown);
   //  when the timer start
   const now = Date.now();
   const then = now + seconds * 1000;
@@ -53,7 +55,16 @@ function displayEndTime(timestamp) {
 function startTimer() {
   // get string number of fata using this.dataset.time, then using parseInt to cnvert real number
   const seconds = parseInt(this.dataset.time);
-  console.log(seconds);
+  timer(seconds);
 }
 // listen to button when click
 buttons.forEach((button) => button.addEventListener("click", startTimer));
+
+// select the form input
+document.customForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const mins = this.minutes.value;
+  console.log(mins);
+  timer(mins * 60);
+  this.reset();
+});
