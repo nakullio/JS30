@@ -16,7 +16,7 @@ function timer(seconds) {
     // how much time left on the clock
     const secondsLeft = Math.round((then - Date.now()) / 1000);
     // check if we should stop it
-    if (secondsLeft < 0) {
+    if (secondsLeft <= 0) {
       clearInterval(countdown);
     }
     // display it
@@ -44,5 +44,5 @@ function displayEndTime(timestamp) {
   const minutes = end.getMinutes();
   endTime.textContent = `Be Back At ${hour > 12 ? hour - 12 : hour}:${
     minutes < 10 ? "0" : ""
-  }`;
+  }${minutes}`;
 }
