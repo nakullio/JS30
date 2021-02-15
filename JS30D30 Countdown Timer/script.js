@@ -3,6 +3,8 @@ let countdown;
 // set the display
 const timerDisplay = document.querySelector(".display__time-left");
 const endTime = document.querySelector(".display__end-time");
+// select all button with data-time
+const buttons = document.querySelectorAll("[data-time]");
 
 // create function call timer
 function timer(seconds) {
@@ -46,3 +48,12 @@ function displayEndTime(timestamp) {
     minutes < 10 ? "0" : ""
   }${minutes}`;
 }
+
+// startTimer fn
+function startTimer() {
+  // get string number of fata using this.dataset.time, then using parseInt to cnvert real number
+  const seconds = parseInt(this.dataset.time);
+  console.log(seconds);
+}
+// listen to button when click
+buttons.forEach((button) => button.addEventListener("click", startTimer));
