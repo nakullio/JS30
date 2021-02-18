@@ -28,3 +28,10 @@ function randomHole(holes) {
   lastHole = hole;
   return hole;
 }
+
+// set the mole popup
+function peep() {
+  const time = randTime(200, 1000);
+  const hole = randomHole(holes);
+  hole.classList.add("up");
+}
