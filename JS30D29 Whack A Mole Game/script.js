@@ -2,6 +2,7 @@ const holes = document.querySelectorAll(".hole");
 const scoreBoard = document.querySelector(".score");
 const moles = document.querySelectorAll(".mole");
 let lastHole;
+let timeUp = false;
 
 // set the function for interact with elements
 // listen to any events
@@ -34,4 +35,9 @@ function peep() {
   const time = randTime(200, 1000);
   const hole = randomHole(holes);
   hole.classList.add("up");
+  //   remove the up after timeout
+  setTimeout(() => {
+    hole.classList.remove("up");
+    if (!timeUp) peep();
+  }, time);
 }
