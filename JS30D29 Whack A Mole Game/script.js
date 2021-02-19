@@ -3,6 +3,8 @@ const scoreBoard = document.querySelector(".score");
 const moles = document.querySelectorAll(".mole");
 let lastHole;
 let timeUp = false;
+// give score when the click hits the mole
+let score = 0;
 
 // set the function for interact with elements
 // listen to any events
@@ -41,3 +43,21 @@ function peep() {
     if (!timeUp) peep();
   }, time);
 }
+
+function startGame() {
+  scoreBoard.textContent = 0;
+  timeUp = false;
+  score = 0;
+  peep();
+  setTimeout(() => (timeUp = true), 10000);
+}
+
+// catch the mole
+function bonk(e) {
+  if (!e.isTrusted) return; // cheater!
+  score++;
+  this.classList.remove("up");
+  scoreBoard.textContent = score;
+}
+
+moles.forEach((mole) => mole.addEventListener("click", bonk));
